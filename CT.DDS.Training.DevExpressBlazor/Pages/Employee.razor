@@ -1,0 +1,17 @@
+﻿@page  "/Employee"
+@inherits EmployeeBase
+
+
+<DxDataGrid Data="Employees"
+            PageSize="5"
+            ShowFilterRow="false"
+            CssClass="mw-1100">
+    <DxDataGridCommandColumn Width="150px" />
+
+    <DxDataGridColumn Field="@nameof(EmployeeDTO.FirstName)" Caption="Forecast" Width="150px" />
+    <DxDataGridColumn Field="@nameof(EmployeeDTO.LastName)" Caption="Forecast" Width="150px" />
+    <DxDataGridDateEditColumn Field="@nameof(EmployeeDTO.BirthDate)" DisplayFormat="D" EditorFormat="d" EditorDisplayFormat="D" />
+    <DxDataGridDateEditColumn Field="@nameof(EmployeeDTO.JoinedDate)" DisplayFormat="D" EditorFormat="d" EditorDisplayFormat="D" />
+    <DxDataGridDateEditColumn Field="@nameof(EmployeeDTO.ExitDate)" DisplayFormat="D" EditorFormat="d" EditorDisplayFormat="D" />
+</DxDataGrid>
+

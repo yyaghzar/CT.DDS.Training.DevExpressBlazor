@@ -1,0 +1,35 @@
+﻿@page "/userinfo"
+@inherits UserInfoBase
+
+    <AuthorizeView Roles="admin">
+        <Authorized>
+            <h1>Claims from Context</h1>
+            <ul>
+
+                @foreach (var claim in context.User.Claims)
+                {
+                    <li>@claim.Type :  @claim.Value</li>
+                }
+            </ul>
+
+
+
+            <h1>Access Token</h1>
+            @Token
+
+            @if (context.User.IsInRole("admin"))
+            {
+                <h2>Admin</h2>
+            }
+            else
+            {
+                <h2>Not Admin</h2>
+            }
+        </Authorized>
+        <NotAuthorized>
+            <h2>Unauthorized</h2>
+
+        </NotAuthorized>
+    </AuthorizeView>
+
+
