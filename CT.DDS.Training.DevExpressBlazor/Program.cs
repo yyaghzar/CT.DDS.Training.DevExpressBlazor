@@ -30,7 +30,8 @@ namespace CT.DDS.Training.DevExpressBlazor
                 // see https://aka.ms/blazor-standalone-auth 
                 builder.Configuration.Bind("Oidc:ProviderOptions", options.ProviderOptions);
                 builder.Configuration.Bind("Oidc:UserOptions", options.UserOptions);
-
+                
+                
 
 
 
