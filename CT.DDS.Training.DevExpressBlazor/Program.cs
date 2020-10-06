@@ -23,18 +23,23 @@ namespace CT.DDS.Training.DevExpressBlazor
             builder.Services.AddTransient<EmployeeApiAuthorizationMessageHandler>();
             builder.Services.AddHttpClient("employeeApi", client => client.BaseAddress = new Uri("https://localhost:44329/"))
                 .AddHttpMessageHandler<EmployeeApiAuthorizationMessageHandler>();
+
             builder.Services.AddScoped<IEmployeeDataService, EmployeeDataService>();
             builder.Services.AddDevExpressBlazor();
+            builder.Services.AddAuthorizationCore(options =>
+            {
+                options.AddPolicy("isEngineer", policyBuilder =>
+                {
+                    policyBuilder.RequireClaim("Title", "Engineer");
+                });
+
+            });
             builder.Services.AddOidcAuthentication(options =>
-            {               
+            {   
+                
                 // see https://aka.ms/blazor-standalone-auth 
                 builder.Configuration.Bind("Oidc:ProviderOptions", options.ProviderOptions);
                 builder.Configuration.Bind("Oidc:UserOptions", options.UserOptions);
-                
-                
-
-
-
 
             });
 
